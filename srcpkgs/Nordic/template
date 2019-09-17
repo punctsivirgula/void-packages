@@ -1,0 +1,21 @@
+# Template file for 'Nordic'
+pkgname=Nordic
+version=1.6.5
+revision=1
+build_style=meta
+short_desc="Gtk3.20+ theme based on Nord color pallete"
+maintainer="punct <punctsivirgula@protonmail.com>"
+license="GPL-3.0"
+homepage="https://github.com/EliverLara/Nordic"
+distfiles="https://github.com/EliverLara/${pkgname}/archive/v${version}.tar.gz"
+checksum=f5b393ef3432203833082ccc78e9b82575fe29a18b91479c34375c8488b507c9
+
+do_install() {
+	_installpath=${DESTDIR}/usr/share/themes/Nordic
+	mkdir -p $_installpath
+	cp -r . $_installpath
+}
+
+post_install() {
+	vlicense LICENSE
+}
