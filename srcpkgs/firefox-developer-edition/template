@@ -1,0 +1,42 @@
+# Template file for 'firefox-developer-edition'
+pkgname=firefox-developer-edition
+version=71.0b12
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+short_desc="Firefox Browser Developer Edition"
+maintainer="punctsivirgula <punctsivirgula@protonmail.com>"
+license="MPL 2.0, Apache 2.0"
+homepage="https://www.mozilla.org/en-US/firefox/developer/"
+build_style=meta
+distfiles="https://download-installer.cdn.mozilla.net/pub/devedition/releases/${version}/linux-x86_64/en-US/firefox-${version}.tar.bz2"
+checksum=677de0414fd2e436597b7186f6277fdf0a983376f7c0ba8bf8552da8d6cd360e
+nopie=yes
+
+do_install() {
+pwd
+	ls -la .
+
+echo 'DESTDIR'${DESTDIR}
+ls -la ${DESTDIR}
+ls -la ${SRCDIR}
+    vmkdir usr/bin
+    vmkdir usr/lib/${pkgname}
+    vcopy ./firefox/* usr/lib/${pkgname}
+    ln -s ../lib/${pkgname}/firefox ${DESTDIR}/usr/bin/${pkgname} 
+
+echo 'DESTDIR'${DESTDIR}
+ls -la ${DESTDIR}
+
+echo 'SRCDIR'${SRCDIR}
+ls -la ${SRCDIR}
+echo ${PKGDIR}
+
+	#mkdir ${DESTDIR}/usr/{bin,lib}
+	#vmkdir /usr/lib/firefox-devedition/
+
+	#vlicense usr/share/doc/slack-desktop/copyright
+	#vinstall usr/share/pixmaps/slack.png 644 usr/share/pixmaps
+	#vcopy usr/lib/slack usr/lib
+	#ln -s ../lib/slack/slack ${DESTDIR}/usr/bin/slack
+}
